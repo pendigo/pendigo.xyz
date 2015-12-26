@@ -1,0 +1,10 @@
+title: Pendigo
+author:
+  name: Stillez
+  email: 'yobloobc295@gmail.com'
+metadata:
+    description: 'Tổng hợp tin tức về Web Development'
+# Main Menu
+menu:
+  - text: External link
+    link: "#" 

@@ -1,0 +1,9 @@
+{% for page in pages.children %}
+    {% if page.visible %}
+        <li>
+            <a href="{{ page.url }}">
+                {{ page.menu }}
+            </a>
+        </li>
+    {% endif %}
+{% endfor %}

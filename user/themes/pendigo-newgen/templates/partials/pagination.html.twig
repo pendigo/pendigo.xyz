@@ -1,0 +1,27 @@
+{% if pagination|length > 1 %}
+    <div class="pager">
+        <ul class="uk-pagination">
+            {% if pagination.hasPrev %}
+                {% set url =  (base_url ~ pagination.params ~ pagination.prevUrl)|replace({'//':'/'}) %}
+                <li><a href="{{ url }}"><i class="uk-icon-chevron-left"></i></a></li>
+            {% endif %}
+            {% for paginate in pagination %}
+
+                {% if paginate.isCurrent %}
+                    <li><a href="#" class="current">{{ paginate.number }}</a></li>
+                {% elseif paginate.isInDelta %}
+                    {% set url =  (base_url ~ pagination.params ~ paginate.url)|replace({'//':'/'}) %}
+                    <li><a href="{{ url }}">{{ paginate.number }}</a></li>
+                {% elseif paginate.isDeltaBorder %}
+                    <li class="gap"><span>&hellip;</span></li>
+                {% endif %}
+
+            {% endfor %}
+
+            {% if pagination.hasNext %}
+                {% set url =  (base_url ~ pagination.params ~ pagination.nextUrl)|replace({'//':'/'}) %}
+                <li><a href="{{ url }}"><i class="uk-icon-chevron-right"></i></a></li>
+            {% endif %}
+        </ul>
+    </div>
+{% endif %}

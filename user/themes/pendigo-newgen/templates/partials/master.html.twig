@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+{% block head %}
+    <title>{%  if header.title %}{{ header.title }}{% endif %} - {{ site.title }}</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    {% include 'partials/metadata.html.twig' %}
+    {% block stylesheets %}
+        {% do assets.add('https://fonts.googleapis.com/css?family=Roboto&amp;subset=latin,vietnamese') %}
+        {% do assets.add('https://fonts.googleapis.com/css?family=Lobster&amp;subset=latin,vietnamese') %}
+        {% do assets.add('https://cdnjs.cloudflare.com/ajax/libs/uikit/2.24.3/css/uikit.min.css') %}
+        {% do assets.add('theme://assets/css/pendigo-v2.css') %}
+        {{ assets.css() }}
+    {% endblock %}
+{% endblock head %}
+</head>
+<body>
+<div class="wrapper">
+    <nav class="st-nav">
+        <div class="st-container">
+            <button class="offcanvas-toggle-btn uk-visible-small" data-uk-offcanvas="{target: '#offcanvas-menu-mobile'}"><i class="uk-icon-bars"></i> Menu</button>
+            <ul class="uk-clearfix uk-hidden-small menu">
+                {% include 'partials/navigation.html.twig' %}
+            </ul>
+        </div>
+    </nav>
+
+    <header class="st-container st-header">
+        <h1><a href="{{ base_url_absolute }}">{{ site.title|capitalize }}</a></h1>
+        <p>{{ site.metadata.description }}</p>
+    </header>
+    {% block content %}{% endblock %}
+    <footer class="st-footer">
+        <div class="st-container">
+            <a href="{{ base_url_absolute }}">{{ site.title|capitalize }}</a> &copy; 2016 - All Rights Reserved.
+        </div>
+    </footer>
+</div>
+<div id="offcanvas-menu-mobile" class="uk-offcanvas">
+    <div class="uk-offcanvas-bar">
+        <ul class="menu">
+            {% include 'partials/navigation.html.twig' %}
+        </ul>
+    </div>
+</div>
+
+{% block javascripts %}
+    {% do assets.add('https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js') %}
+    {% do assets.add('https://cdnjs.cloudflare.com/ajax/libs/uikit/2.24.3/js/uikit.min.js') %}
+    {{  assets.js() }}
+{% endblock %}
+</body>
+</html>

@@ -1,0 +1,15 @@
+{% extends 'partials/master.html.twig' %}
+
+{% block content %}
+    <main class="st-container st-main st-main-single">
+        <section class="post-single-container">
+            <article class="post-single">
+                <div class="post-heading">
+                    <h2><a href="#" class="post-title">{{ page.title }}</a></h2>
+                    <span class="post-meta">{{ page.date|date('d') }} {{ page.date|date("M") }}, {{ page.date|date("Y") }}</span>
+                </div>
+                {{ page.content }}
+            </article>
+        </section>
+    </main>
+{% endblock %}
